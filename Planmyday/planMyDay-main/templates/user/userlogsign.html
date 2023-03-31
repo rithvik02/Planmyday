@@ -1,0 +1,105 @@
+{% extends 'basic.html' %}
+{% block title %}login
+{% endblock title %}
+{% block body %}
+<!--Cards starts here-->
+<div class="container py-5">
+
+
+    <!--login and signup tab starts here -->
+    <section>
+        <div class="card w-50 mx-auto">
+            <div class="card-title bg-light ">
+                <div class="container mt-3 mx-auto">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs justify-content-center w-100 " style="width:358px">
+
+                        <li class="nav-item">
+                            <a class="nav-link active " data-toggle="tab" href="#home" style="width:158px">Login</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu1" style="width:158px">Signup</a>
+                        </li>
+
+                </div>
+            </div>
+
+
+            </ul>
+            <div class="card-body">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="home" class="container tab-pane active">
+                        <p class="text-center text-dark">User login form</p>
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-xlg-12 col-sm-12">
+
+                                    <form action="/user/login"  method="post">
+                                        {%csrf_token%}
+                                        <div class="form-group">
+                                            <label for="email">Username:</label>
+                                            <input type="text" class="form-control " id="email" placeholder="Enter email" name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pwd">Password:</label>
+                                            <input type="password" class="form-control " id="pwd" placeholder="Enter password" name="pswd">
+                                        </div>
+                                       
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                        <a href="/forgot-password" class="ml-3">Forgot Password?</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu1" class="container tab-pane fade">
+                        <p class="text-center text-dark">User Signup form</p>
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-xlg-12 col-sm-12">
+
+                                    <form action="/user/signup" method="post">
+                                        <div class="form-group">
+                                            {%csrf_token%}
+                                            <label for="username">Username:</label>
+                                            <input type="text" class="form-control " id="username" placeholder="Username" name="username" pattern="^[a-zA-Z0-9._-]{4,20}$" title="Username must be between 4 and 20 characters and can only contain letters, numbers, periods, hyphens, and underscores." required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                                          </div>
+                                        <div class="form-group">
+                                            <label for="pwd">Password:</label>
+                                            <input type="password" class="form-control " id="password1" placeholder="Enter password" name="password1" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Password must contain at least 8 characters and include at least one uppercase letter, one lowercase letter, and one number." required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="pwd">Confirm Password:</label>
+                                            <input type="password" class="form-control " id="password2" placeholder="Confirm password" name="password2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Password must contain at least 8 characters and include at least one uppercase letter, one lowercase letter, and one number." required>
+                                        </div>
+                                        
+
+                                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+    </section>
+    <!--Login and logout tab ends here-->
+    </div>
+
+    <!--Cards ends here-->
+{% endblock body %}

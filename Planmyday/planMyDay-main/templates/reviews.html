@@ -1,0 +1,62 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+  Reviews
+{% endblock title %}
+
+{% block styles %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .form-control-sm {
+      height: 30px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <h1 class="mb-4">Reviews & Ratings</h1>
+
+    {% if user.is_authenticated %}
+      <form method="POST" action="{% url 'reviewsPage' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.as_p }}
+        </div>
+        <button class="btn btn-primary bg-primary" type="submit">Submit Review</button>
+      </form>
+    {% else %}
+      <p class="mb-4">Please <a href="{% url 'userloginpage' %}">log in</a> to submit a review.</p>
+    {% endif %}
+
+    <h2 class="mb-3">Reviews & Ratings</h2>
+    {% if reviews %}
+   <ul style="list-style:none;padding:0;">
+    {% for review in reviews %}
+      <li style="background-color:#f7f7f7;border:1px solid #ccc;padding:10px;margin-bottom:10px;">
+        <p style="font-weight:bold;margin:0;"><span style="color:#ff0000;">Submitted by:</span> {{ review.user.username }}</p>
+        <p style="margin:5px 0 10px;"><span style="font-weight:bold;">Rating:</span> {{ review.rating }} / 10</p>
+        {% if review.comment %}
+          <p style="margin:5px 0 0;"><span style="font-weight:bold;">Comment:</span> {{ review.comment }}</p>
+          {% endif %}
+            
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p class="mt-3">No reviews yet.</p>
+    {% endif %}
+  </div>
+{% endblock %}

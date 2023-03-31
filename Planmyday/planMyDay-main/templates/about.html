@@ -1,0 +1,55 @@
+{% extends 'basic.html' %}
+{% block title %}about
+{% endblock title %}
+{% block body %}
+	<h1>About Us</h1>
+	<p>Welcome to <strong>planMyTrip !</strong> We're a Adventure booking platform that aims to make your adventure experience easy and stress-free. Here's a bit about our goals, mission, and what makes us unique:</p>
+
+	<!-- Tabs -->
+	<ul class="nav nav-tabs" id="aboutTabs" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="true">History</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="values-tab" data-toggle="tab" href="#values" role="tab" aria-controls="values" aria-selected="false">Values & Beliefs</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="founder-tab" data-toggle="tab" href="#founder" role="tab" aria-controls="founder" aria-selected="false">Founder</a>
+		</li>
+	</ul>
+
+	<!-- Tab Content -->
+	<div class="tab-content" id="aboutTabsContent">
+		<div class="tab-pane fade show active" id="history" role="tabpanel" aria-labelledby="history-tab">
+			<p><strong>How we started:</strong> Our founder, Usama, was frustrated with the process of finding stay and booking adventures for his pleasure. He saw an opportunity to create a platform that would make it easier for travelers to find stay and book adventure, and thus planMyDay App was born.</p>
+
+			<p><strong>Our mission:</strong> To provide a seamless and stress-free Adventure booking experience for travelers.</p>
+
+			<p><strong>What makes us unique:</strong> Our platform is designed with the traveler in mind. We've created a user-friendly interface that makes it easy to book adventures, and we offer a wide selection of adventures to choose from.</p>
+
+			<p><strong>Why customers should choose us:</strong> We're committed to providing the best possible Adventure booking experience for our customers. Our platform is easy to use, we offer a wide selection of Adventures to choose from, and we provide top-notch customer service.</p>
+		</div>
+
+		<div class="tab-pane fade" id="values" role="tabpanel" aria-labelledby="values-tab">
+			<p><strong>Our values:</strong> We believe in providing a high-quality service that is easy to use and provides value to our customers. We also believe in being transparent and honest in our business practices.</p>
+
+			<p><strong>Our beliefs:</strong> We believe that travel is an important part of life, and that it should be accessible to everyone. We also believe that technology can make travel easier and more enjoyable.</p>
+		</div>
+
+		<div class="tab-pane fade" id="founder" role="tabpanel" aria-labelledby="founder-tab">
+			<p><strong>About our founder:</strong> Usama has over 10 years of experience in the travel industry. He has worked for some of the largest Travel chains in the world, and has a deep understanding of what travelers need and want when it comes to Adventure booking.</p>
+
+		
+      <p>Usama started planMyDay App in 2018 with the goal of creating a platform that would make the Adventure booking process easier and more enjoyable for travelers.</p>
+    </div>
+  </div>
+  
+  <!-- FAQs -->
+  <h2>Frequently Asked Questions</h2>
+  <p>Here are some answers to common questions we get from our customers:</p>
+  <ul>
+    <li><strong>Q: How do I book for an Adventure through your platform?</strong> A: Simply search for the city or location you want to have fun in, select your check-in and check-out dates, and choose from the available options. Once you've found the adventure you want to book, simply follow the prompts to complete your booking.</li>
+    <li><strong>Q: Do you offer customer support?</strong> A: Yes! Our customer support team is available 24/7 to assist you with any questions or issues you may have.</li>
+    <li><strong>Q: How do I cancel a booking?</strong> A: If you need to cancel a booking, simply log in to your account and follow the prompts to cancel your booking. Please note that cancellation policies may vary depending on the adventure and the rate you've booked.</li>
+  </ul>
+  {% endblock %}

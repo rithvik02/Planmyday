@@ -1,0 +1,81 @@
+{% extends 'basic.html' %}
+
+{% block title %}Payment{% endblock title %}
+
+{% block head %}
+<!-- Add Bootstrap CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock head %}
+{% block body %}
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Payment Details</h3>
+        </div>
+        <div class="card-body">
+          <p style="color:green"><strong>Hotel:</strong> {{ room.hotel.name }}</p>
+          <p style="color:green"><strong>Location:</strong> {{ room.hotel.location }}</p>
+          <p style="color:green"><strong>Adventure:</strong> {{ room.get_adventure_type_display }}</p>
+          <p style="color:green"><strong>Room No:</strong> {{ room.id }}</p>
+          <p style="color:green"><strong>Room Type:</strong> {{ room.get_room_type_display }} Service</p>
+          <p style="color:green"><strong>Price:</strong > {{ room.price }}</p>
+
+          <hr>
+
+          <form action="/user/handlePayment" method="POST">
+            {% csrf_token %}
+
+            {% if error_message %}
+            <div class="alert alert-danger">
+              {{ error_message }}
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+              <label for="card_number">Card Number:</label>
+              <input type="text" class="form-control" id="card_number" name="card_number" required maxlength="16">
+            </div>
+            <div class="form-group">
+              <label for="expiration_date">Expiration Date:</label>
+              <input type="month" class="form-control" id="expiration_date" name="expiration_date"  required>
+            </div>
+            
+            <div class="form-group">
+              <label for="cvv">CVV:</label>
+              <input type="text" class="form-control" id="cvv" name="cvv" required maxlength="3">
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+              <label for="payment_option">Payment Option:</label>
+              <select class="form-control" id="payment_option" name="payment_option" required>
+                <option value="">Select Payment Option</option>
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+            <input type="hidden" name="booking_id" value="{{booking_id }}">
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var currentMonth = year + '-' + (month < 10 ? '0' + month : month);
+  document.getElementById('expiration_date').setAttribute('min', currentMonth);
+
+</script>
+{% endblock body %}
